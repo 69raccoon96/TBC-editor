@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,30 @@ namespace TBC_editor
 {
     public partial class Form1 : Form
     {
+        public static string pathImages, fullPath;
+        public static List<string> images = new List<string>();
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            fullPath = Application.StartupPath.ToString();
+            pathImages = fullPath + "\\images";
+            label1.Text = pathImages;
+            DirectoryInfo dir = new DirectoryInfo(pathImages);
+            foreach (var item in dir.GetFiles())
+            {
+                images.Add(item.Name);
+            }
+            //label1.Text = (Convert.ToString(images[0]));
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Images images = new Images();
+            images.Show();
         }
     }
 }
