@@ -21,6 +21,7 @@ namespace TBC_editor
         {
             int height = 400, width = 200;
             int x = 0, y = 0, diff = 10;
+            bool first = true;
             foreach (string fName in Form1.images)
             {
                 Image img = Image.FromFile(Form1.pathImages + "\\" + fName);
@@ -28,6 +29,14 @@ namespace TBC_editor
                 pb.Size = new Size(width, height);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 pb.Image = img;
+                if (first == true)
+                {
+                    first = false;
+                    pb.Location = new Point(x, y);
+                    x += diff;
+                    panel1.Controls.Add(pb);
+                    continue;
+                }
                 if (x > 2 * diff + 2 * width)
                 {
                     x = 0;
