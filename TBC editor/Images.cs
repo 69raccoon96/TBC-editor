@@ -19,12 +19,29 @@ namespace TBC_editor
 
         private void Images_Load(object sender, EventArgs e)
         {
-            string test = "";
-            foreach(var image in Form1.images)
+            int height = 400, width = 200;
+            int x = 0, y = 0, diff = 10;
+            foreach (string fName in Form1.images)
             {
-                test += image + " ";
+                Image img = Image.FromFile(Form1.pathImages + "\\" + fName);
+                PictureBox pb = new PictureBox();
+                pb.Size = new Size(width, height);
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.Image = img;
+                if (x > 2 * diff + 2 * width)
+                {
+                    x = 0;
+                    y += height + diff;
+                }
+                else
+                {
+                    x += width + diff;
+                }
+                pb.Location = new Point(x, y);
+                x += diff;
+
+                panel1.Controls.Add(pb);
             }
-            label1.Text = test;
         }
     }
 }
