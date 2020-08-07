@@ -45,6 +45,8 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(523, 532);
             this.listBox1.TabIndex = 0;
+            this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListBox1_ouseClick);
+            this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox1_MouseDown);
             // 
             // button1
             // 

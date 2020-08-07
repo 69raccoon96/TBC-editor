@@ -14,6 +14,7 @@ namespace TBC_editor
     public partial class Form1 : Form
     {
         public static List<string> textToDoc = new List<string>();
+        private int selectedItem;
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +27,32 @@ namespace TBC_editor
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            int index = this.listBox1.IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches)
+            {
+                selectedItem = index;
+                if (e.Button == MouseButtons.Left)
+                {
+                    var menu = new ContextMenuStrip();
+                    menu.Items.Add("Удалить");
+                    menu.Items[0].Click += new EventHandler(DeleteClicked);
+                    menu.Show(Cursor.Position);
+                }
+            }
+            
+        }
+        private void DeleteClicked(object sender,EventArgs e)
+        {
+            textToDoc.RemoveAt(selectedItem);
+            listBox1.Items.RemoveAt(selectedItem);
+        }
+        private void ListBox1_ouseClick(object sender, MouseEventArgs e)
         {
 
         }
