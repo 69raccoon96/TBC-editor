@@ -22,21 +22,12 @@ namespace TBC_editor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            fullPath = Application.StartupPath.ToString();
-            pathImages = fullPath + "\\images";
-            label1.Text = pathImages;
-            DirectoryInfo dir = new DirectoryInfo(pathImages);
-            foreach (var item in dir.GetFiles())
-            {
-                images.Add(item.Name);
-            }
-            //label1.Text = (Convert.ToString(images[0]));
+
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Images images = new Images();
-            images.Show();
+
         }
     }
 }
