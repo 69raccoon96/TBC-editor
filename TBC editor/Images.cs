@@ -13,21 +13,36 @@ namespace TBC_editor
 {
     public partial class Images : Form
     {
-        private static Dictionary<string,string> persons = new Dictionary<string,string>();
-        public Images()
+        Resources res;
+        public Images(Resources res)
         {
             InitializeComponent();
-            persons.Add("dv", "Алиса");
+            this.res = res;
         }
 
         private void Images_Load(object sender, EventArgs e)
         {
-            DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\images\\sprites\\");
-            var files = dir.GetFiles();
-            label1.Text = "";
-            foreach(var elem in files)
+            var a = res.persons[0];
+            var x = 10;
+            var y = 10;
+            var count = 0;
+            foreach(var image in a.Bodies)
             {
-                label1.Text += elem.Name + "\n";
+                var pb = new PictureBox();
+                pb.Image = image;
+                pb.Size = new Size(100, 100);
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.Location = new Point(x, y);
+                this.Controls.Add(pb);
+                x += 105;
+                count++;
+                if(count == 3)
+                {
+                    count = 0;
+                    y += 105;
+                    x -= 105 * 3;
+                }
+               
             }
         }
     }

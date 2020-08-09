@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 
 namespace TBC_editor
 {
-    public struct Person
+    public class Person
     {
         public string Name;
         public string Tag;
         public string Color;
+        public List<Bitmap> Bodies = new List<Bitmap>();
+        public List<Bitmap> Emotions = new List<Bitmap>();
+        public List<Bitmap> Clothes = new List<Bitmap>();
         public Person(params string[] ps)
             {
             Name = ps[0];
@@ -20,10 +23,10 @@ namespace TBC_editor
             Color = ps[2];
             }
     }
+
     public class Resources
     {
         public List<Person> persons = new List<Person>();
-        public List<Bitmap> images = new List<Bitmap>();
         public Resources()
         {
             var path = Directory.GetCurrentDirectory() + "\\persons.txt";
@@ -38,6 +41,30 @@ namespace TBC_editor
                     persons.Add(person);
                 }
             }
+            path = Directory.GetCurrentDirectory() + "\\images\\sprites\\";
+            DirectoryInfo dir = new DirectoryInfo(path);
+            var files = dir.GetFiles();
+            foreach(var person in persons)
+            {
+                foreach(var file in files)
+                {
+                    if(file.Name.Contains(person.Tag+"_"))
+                    {
+                        if (file.Name.Contains("telo"))
+                        {
+                            person.Bodies.Add(new Bitmap(path + "\\" + file.Name));
+                            continue;
+                        }
+                        if (file.Name.Contains("pion") || file.Name.Contains("ulica") || file.Name.Contains("swim"))
+                        {
+                            person.Clothes.Add(new Bitmap(path + "\\" + file.Name));
+                            continue;
+                        }
+                        person.Emotions.Add(new Bitmap(path + "\\" + file.Name));
+                    }
+                }
+            }
+            var a = persons;
         }
     }
 }

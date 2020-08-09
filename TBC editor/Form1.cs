@@ -60,7 +60,7 @@ namespace TBC_editor
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            var images = new Images();
+            var images = new Images(res);
             images.Show();
         }
     }
