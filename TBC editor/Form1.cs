@@ -15,6 +15,7 @@ namespace TBC_editor
     {
         public static List<string> textToDoc = new List<string>();
         private int selectedItem;
+        public static Resources res = new Resources();
         public Form1()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace TBC_editor
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            var textForm = new Text(this);
+            var textForm = new Text(this, res.persons);
             textForm.ShowDialog();
         }
 

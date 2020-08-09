@@ -12,20 +12,18 @@ namespace TBC_editor
 {
     public partial class Text : Form
     {
-        private static Dictionary<string, string> persons = new Dictionary<string, string>();
+        private List<Person> persons;
         readonly Form1 form;
-        public Text(Form1 form)
+        public Text(Form1 form, List<Person> res)
         {
             this.form = form;
+            persons = res;
             InitializeComponent();
         }
 
         private void Text_Load(object sender, EventArgs e)
         {
-            persons.Add("Славя", "sl");
-            persons.Add("Лена", "le");
-            persons.Add("Алиса", "dv");
-            comboBox1.Items.AddRange(persons.Keys.ToArray());
+            comboBox1.Items.AddRange(persons.Select(x => x.Name).ToArray());
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -35,19 +33,19 @@ namespace TBC_editor
                 MessageBox.Show("Пожалуйста, добавьте текст, который произносит персонаж");
                 return;
             }
-            string person;
+            int person;
             try
             {
-                person = comboBox1.SelectedItem.ToString();
+                person = comboBox1.SelectedIndex;
             }
             catch
             {
                 MessageBox.Show("Пожалуйста выберите, кто произносит фразу");
                 return;
             }
-            var text = persons[person] + " \"" + textBox1.Text + "\"";
+            var text = persons[person].Tag + " \"" + textBox1.Text + "\"";
             Form1.textToDoc.Add(text);
-            form.listBox1.Items.Add(person + " \"" + textBox1.Text + "\"");
+            form.listBox1.Items.Add(persons[person].Name + " \"" + textBox1.Text + "\"");
             textBox1.Clear();
         }
 
