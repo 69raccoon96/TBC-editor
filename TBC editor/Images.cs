@@ -41,7 +41,8 @@ namespace TBC_editor
                 };
                 pb.DoubleClick += new EventHandler(ImageClicked);
                 var label = new Label();
-                var textArray = ((string)image.Tag).Split('.')[0].Split('_');
+                var textArray = ((string)image.Tag).Split('.')[0].Split('_').ToList();
+                textArray.RemoveAt(0);
                 var text = String.Join(" ", textArray);
                 label.Text = text;
                 label.Location = new Point(x, y + 105);

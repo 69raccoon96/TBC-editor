@@ -48,7 +48,7 @@ namespace TBC_editor
             {
                 foreach(var file in files)
                 {
-                    if(file.Name.Contains(person.Tag+"_"))
+                    if(file.Name.Substring(0,person.Tag.Length+1) == person.Tag+"_")
                     {
                         var image = new Bitmap(path + "\\" + file.Name);
                         image.Tag = file.Name;
@@ -57,7 +57,7 @@ namespace TBC_editor
                             person.Bodies.Add(image);
                             continue;
                         }
-                        if (file.Name.Contains("pion") || file.Name.Contains("ulica") || file.Name.Contains("swim") || file.Name.Contains("dress"))
+                        if (file.Name.Contains("pion") || file.Name.Contains("ulica") || file.Name.Contains("sport") || file.Name.Contains("swim") || file.Name.Contains("dress"))
                         {
                             person.Clothes.Add(image);
                             continue;
