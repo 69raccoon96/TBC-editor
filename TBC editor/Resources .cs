@@ -51,7 +51,8 @@ namespace TBC_editor
                     if(file.Name.Substring(0,person.Tag.Length+1) == person.Tag+"_")
                     {
                         var image = new Bitmap(path + "\\" + file.Name);
-                        image.Tag = file.Name;
+                        var tag = String.Join(" ", file.Name.Split('.')[0].Split('_').ToList());
+                        image.Tag = tag;
                         if (file.Name.Contains("telo"))
                         {
                             person.Bodies.Add(image);

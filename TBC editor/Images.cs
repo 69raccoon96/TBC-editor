@@ -32,6 +32,17 @@ namespace TBC_editor
             var count = 0;
             foreach(var image in images)
             {
+                if(name != "body")
+                {
+                    var tag = ((string)image.Tag).Split(' ');
+                    string cur;
+                    if (tag.Length == 2 || tag[2] == "far")
+                        cur = "1";
+                    else
+                        cur = tag[2];
+                    if (cur != ChoosePeron.currentPos)
+                        continue;
+                }
                 var pb = new PictureBox
                 {
                     Image = image,
@@ -41,10 +52,7 @@ namespace TBC_editor
                 };
                 pb.DoubleClick += new EventHandler(ImageClicked);
                 var label = new Label();
-                var textArray = ((string)image.Tag).Split('.')[0].Split('_').ToList();
-                textArray.RemoveAt(0);
-                var text = String.Join(" ", textArray);
-                label.Text = text;
+                label.Text = (string)image.Tag;
                 label.Location = new Point(x, y + 105);
                 this.Controls.Add(label);
                 this.Controls.Add(pb);
@@ -62,13 +70,27 @@ namespace TBC_editor
         private void ImageClicked(object sender,EventArgs e)
         {
             var image = (Bitmap)((PictureBox)sender).Image;
-            if(name == "body")
+            if (name == "body")
+            {
                 ChoosePeron.body = image;
+                var tag = ((string)image.Tag).Split(' ');
+                if(tag.Length == 2 || tag[2] == "far")
+                {
+                    ChoosePeron.currentPos = "1";
+                }else
+                {
+                    ChoosePeron.currentPos = tag[2];
+                }
+            }
             if (name == "clothes")
                 ChoosePeron.clothes = image;
-            else
+            if (name == "emotions")
                 ChoosePeron.emotion = image;
             cp.Invalidate();
+            foreach (var button in cp.Controls.OfType<Button>())
+            {
+                button.Enabled = true;
+            }
         }
     }
 }

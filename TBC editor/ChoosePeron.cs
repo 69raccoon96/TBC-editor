@@ -16,6 +16,7 @@ namespace TBC_editor
         public static Bitmap emotion;
         public static Bitmap clothes;
         List<Person> persons;
+        public static string currentPos;
         int index;
         public ChoosePeron(List<Person> persons)
         {
@@ -30,6 +31,7 @@ namespace TBC_editor
                 listBox1.Items.Add(persons[i].Name);
             }
             listBox1.SelectedIndex = 0;
+            index = 0;
             var point = listBox1.Location;
             point.Offset(listBox1.Width + 5,0);
             Action<object, EventArgs> action = OpenBodies;
@@ -40,6 +42,7 @@ namespace TBC_editor
             point.Offset(105, 0);
             action = OpenEmo;
             CreateButton(point, "Эмоция",action);
+            
         }
         
         private void CreateButton(Point point, string text, Action<object,EventArgs> action)
@@ -49,7 +52,9 @@ namespace TBC_editor
             button.Size = new Size(100, 50);
             button.Text = text;
             button.Click += new EventHandler(action);
-            Controls.Add(button);
+            if (text == "Одежда" || text == "Эмоция")
+                button.Enabled = false;
+            Controls.Add(button); 
         }
         private void OpenBodies(object sender, EventArgs e)
         {
@@ -68,7 +73,16 @@ namespace TBC_editor
         }
         private void ListBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            int lastIndex = index;
             index = this.listBox1.IndexFromPoint(e.Location);
+            if (lastIndex != index)
+            {
+                body = null;
+                emotion = null;
+                clothes = null;
+                Invalidate();
+            }
+
         }
 
         private void ChoosePeron_Paint(object sender, PaintEventArgs e)
