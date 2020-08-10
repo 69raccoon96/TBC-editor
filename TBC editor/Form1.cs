@@ -60,8 +60,8 @@ namespace TBC_editor
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            var images = new Images(res);
-            images.Show();
+            var choosePerson = new ChoosePeron(res.persons);
+            choosePerson.Show();
         }
     }
 }

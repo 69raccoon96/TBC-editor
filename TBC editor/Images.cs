@@ -13,20 +13,19 @@ namespace TBC_editor
 {
     public partial class Images : Form
     {
-        Resources res;
-        public Images(Resources res)
+        List<Bitmap> images;
+        public Images(List<Bitmap> images)
         {
             InitializeComponent();
-            this.res = res;
+            this.images = images;
         }
 
         private void Images_Load(object sender, EventArgs e)
         {
-            var a = res.persons[0];
             var x = 10;
             var y = 10;
             var count = 0;
-            foreach(var image in a.Bodies)
+            foreach(var image in images)
             {
                 var pb = new PictureBox();
                 pb.Image = image;
