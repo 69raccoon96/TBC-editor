@@ -55,7 +55,7 @@ namespace TBC_editor
                             person.Bodies.Add(new Bitmap(path + "\\" + file.Name));
                             continue;
                         }
-                        if (file.Name.Contains("pion") || file.Name.Contains("ulica") || file.Name.Contains("swim"))
+                        if (file.Name.Contains("pion") || file.Name.Contains("ulica") || file.Name.Contains("swim") || file.Name.Contains("dress"))
                         {
                             person.Clothes.Add(new Bitmap(path + "\\" + file.Name));
                             continue;

@@ -26,18 +26,41 @@ namespace TBC_editor
             {
                 listBox1.Items.Add(persons[i].Name);
             }
+            listBox1.SelectedIndex = 0;
             var point = listBox1.Location;
             point.Offset(listBox1.Width + 5,0);
+            Action<object, EventArgs> action = OpenBodies;
+            CreateButton(point, "Тело",action);
+            action = OpenClothes;
+            point.Offset(105, 0);
+            CreateButton(point, "Одежда",action);
+            point.Offset(105, 0);
+            action = OpenEmo;
+            CreateButton(point, "Эмоция",action);
+        }
+        
+        private void CreateButton(Point point, string text, Action<object,EventArgs> action)
+        {
             var button = new Button();
             button.Location = point;
             button.Size = new Size(100, 50);
-            button.Text = "Тело";
-            button.Click += new EventHandler(OpenBodies);
+            button.Text = text;
+            button.Click += new EventHandler(action);
             Controls.Add(button);
         }
         private void OpenBodies(object sender, EventArgs e)
         {
             var images = new Images(persons[index].Bodies);
+            images.Show();
+        }
+        private void OpenEmo(object sender, EventArgs e)
+        {
+            var images = new Images(persons[index].Emotions);
+            images.Show();
+        }
+        private void OpenClothes(object sender, EventArgs e)
+        {
+            var images = new Images(persons[index].Clothes);
             images.Show();
         }
         private void ListBox1_MouseDown(object sender, MouseEventArgs e)
