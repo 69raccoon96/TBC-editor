@@ -26,24 +26,33 @@ namespace TBC_editor
 
         private void Images_Load(object sender, EventArgs e)
         {
+            this.AutoScroll = true;
             var x = 10;
             var y = 10;
             var count = 0;
             foreach(var image in images)
             {
-                var pb = new PictureBox();
-                pb.Image = image;
-                pb.Size = new Size(100, 100);
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                pb.Location = new Point(x, y);
+                var pb = new PictureBox
+                {
+                    Image = image,
+                    Size = new Size(100, 100),
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    Location = new Point(x, y)
+                };
                 pb.DoubleClick += new EventHandler(ImageClicked);
+                var label = new Label();
+                var textArray = ((string)image.Tag).Split('.')[0].Split('_');
+                var text = String.Join(" ", textArray);
+                label.Text = text;
+                label.Location = new Point(x, y + 105);
+                this.Controls.Add(label);
                 this.Controls.Add(pb);
                 x += 105;
                 count++;
                 if(count == 3)
                 {
                     count = 0;
-                    y += 105;
+                    y += 105 + label.Height;
                     x -= 105 * 3;
                 }
                

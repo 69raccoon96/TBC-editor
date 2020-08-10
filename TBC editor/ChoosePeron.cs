@@ -20,7 +20,6 @@ namespace TBC_editor
         public ChoosePeron(List<Person> persons)
         {
             this.persons = persons;
-            body = persons[0].Bodies[0];
             InitializeComponent();
         }
 
@@ -74,29 +73,26 @@ namespace TBC_editor
 
         private void ChoosePeron_Paint(object sender, PaintEventArgs e)
         {
-            try
-            {
                 Graphics g = e.Graphics;
                 if (body != null)
                 {
-                    var rect = new Rectangle(listBox1.Width + 5, 55, body.Width, body.Height);
-                    g.DrawImage(body, rect);
+                    DrawImage(g,body);
                 }
                 if (clothes != null)
                 {
-                    var rect = new Rectangle(listBox1.Width + 5, 55, clothes.Width, clothes.Height);
-                    g.DrawImage(clothes, rect);
+                    DrawImage(g, clothes);
                 }
                 if (emotion != null)
                 {
-                    var rect = new Rectangle(listBox1.Width + 5, 55, emotion.Width, emotion.Height);
-                    g.DrawImage(emotion, rect);
+                    DrawImage(g, emotion);
                 }
-            }
-            catch
-            {
-                return;
-            }
+        }
+        private void DrawImage(Graphics g,Bitmap image)
+        {
+            var size = new Size(image.Width / 2, image.Height / 2);
+            var bodyFixed = new Bitmap(image, size);
+            var rect = new Rectangle(listBox1.Width + 5, 55, size.Width,size.Height);
+            g.DrawImage(bodyFixed, rect);
         }
     }
 }

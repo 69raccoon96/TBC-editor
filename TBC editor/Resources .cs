@@ -50,17 +50,19 @@ namespace TBC_editor
                 {
                     if(file.Name.Contains(person.Tag+"_"))
                     {
+                        var image = new Bitmap(path + "\\" + file.Name);
+                        image.Tag = file.Name;
                         if (file.Name.Contains("telo"))
                         {
-                            person.Bodies.Add(new Bitmap(path + "\\" + file.Name));
+                            person.Bodies.Add(image);
                             continue;
                         }
                         if (file.Name.Contains("pion") || file.Name.Contains("ulica") || file.Name.Contains("swim") || file.Name.Contains("dress"))
                         {
-                            person.Clothes.Add(new Bitmap(path + "\\" + file.Name));
+                            person.Clothes.Add(image);
                             continue;
                         }
-                        person.Emotions.Add(new Bitmap(path + "\\" + file.Name));
+                        person.Emotions.Add(image);
                     }
                 }
             }
