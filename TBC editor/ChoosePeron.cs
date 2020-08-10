@@ -12,6 +12,9 @@ namespace TBC_editor
 {
     public partial class ChoosePeron : Form
     {
+        public static Bitmap body;
+        public static Bitmap emotion;
+        public static Bitmap clothes;
         List<Person> persons;
         int index;
         public ChoosePeron(List<Person> persons)
@@ -50,22 +53,27 @@ namespace TBC_editor
         }
         private void OpenBodies(object sender, EventArgs e)
         {
-            var images = new Images(persons[index].Bodies);
+            var images = new Images(persons[index].Bodies,"body");
             images.Show();
         }
         private void OpenEmo(object sender, EventArgs e)
         {
-            var images = new Images(persons[index].Emotions);
+            var images = new Images(persons[index].Emotions,"emotions");
             images.Show();
         }
         private void OpenClothes(object sender, EventArgs e)
         {
-            var images = new Images(persons[index].Clothes);
+            var images = new Images(persons[index].Clothes, "clothes");
             images.Show();
         }
         private void ListBox1_MouseDown(object sender, MouseEventArgs e)
         {
             index = this.listBox1.IndexFromPoint(e.Location);
+        }
+        public void UpdateImage()
+        {
+            groupBox1.Controls.Clear();
+
         }
     }
 }

@@ -14,10 +14,12 @@ namespace TBC_editor
     public partial class Images : Form
     {
         List<Bitmap> images;
-        public Images(List<Bitmap> images)
+        string name;
+        public Images(List<Bitmap> images, string name)
         {
             InitializeComponent();
             this.images = images;
+            this.name = name;
         }
 
         private void Images_Load(object sender, EventArgs e)
@@ -32,6 +34,7 @@ namespace TBC_editor
                 pb.Size = new Size(100, 100);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 pb.Location = new Point(x, y);
+                pb.DoubleClick += new EventHandler(ImageClicked);
                 this.Controls.Add(pb);
                 x += 105;
                 count++;
@@ -43,6 +46,15 @@ namespace TBC_editor
                 }
                
             }
+        }
+        private void ImageClicked(object sender,EventArgs e)
+        {
+            var image = (Bitmap)((Button)sender).Image;
+            if(name == "body")
+            {
+                ChoosePeron.body = image;
+            }
+
         }
     }
 }
