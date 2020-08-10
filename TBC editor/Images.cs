@@ -15,11 +15,13 @@ namespace TBC_editor
     {
         List<Bitmap> images;
         string name;
-        public Images(List<Bitmap> images, string name)
+        ChoosePeron cp;
+        public Images(List<Bitmap> images, string name,ChoosePeron cp)
         {
             InitializeComponent();
             this.images = images;
             this.name = name;
+            this.cp = cp;
         }
 
         private void Images_Load(object sender, EventArgs e)
@@ -49,12 +51,14 @@ namespace TBC_editor
         }
         private void ImageClicked(object sender,EventArgs e)
         {
-            var image = (Bitmap)((Button)sender).Image;
+            var image = (Bitmap)((PictureBox)sender).Image;
             if(name == "body")
-            {
                 ChoosePeron.body = image;
-            }
-
+            if (name == "clothes")
+                ChoosePeron.clothes = image;
+            else
+                ChoosePeron.emotion = image;
+            cp.Invalidate();
         }
     }
 }

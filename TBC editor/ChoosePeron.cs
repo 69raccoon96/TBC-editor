@@ -20,6 +20,7 @@ namespace TBC_editor
         public ChoosePeron(List<Person> persons)
         {
             this.persons = persons;
+            body = persons[0].Bodies[0];
             InitializeComponent();
         }
 
@@ -53,27 +54,49 @@ namespace TBC_editor
         }
         private void OpenBodies(object sender, EventArgs e)
         {
-            var images = new Images(persons[index].Bodies,"body");
+            var images = new Images(persons[index].Bodies,"body",this);
             images.Show();
         }
         private void OpenEmo(object sender, EventArgs e)
         {
-            var images = new Images(persons[index].Emotions,"emotions");
+            var images = new Images(persons[index].Emotions,"emotions",this);
             images.Show();
         }
         private void OpenClothes(object sender, EventArgs e)
         {
-            var images = new Images(persons[index].Clothes, "clothes");
+            var images = new Images(persons[index].Clothes, "clothes",this);
             images.Show();
         }
         private void ListBox1_MouseDown(object sender, MouseEventArgs e)
         {
             index = this.listBox1.IndexFromPoint(e.Location);
         }
-        public void UpdateImage()
-        {
-            groupBox1.Controls.Clear();
 
+        private void ChoosePeron_Paint(object sender, PaintEventArgs e)
+        {
+            try
+            {
+                Graphics g = e.Graphics;
+                if (body != null)
+                {
+                    var rect = new Rectangle(listBox1.Width + 5, 55, body.Width, body.Height);
+                    g.DrawImage(body, rect);
+                }
+                if (clothes != null)
+                {
+                    var rect = new Rectangle(listBox1.Width + 5, 55, clothes.Width, clothes.Height);
+                    g.DrawImage(clothes, rect);
+                }
+                if (emotion != null)
+                {
+                    var rect = new Rectangle(listBox1.Width + 5, 55, emotion.Width, emotion.Height);
+                    g.DrawImage(emotion, rect);
+                }
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }
