@@ -34,13 +34,8 @@ namespace TBC_editor
             {
                 if(name != "body")
                 {
-                    var tag = ((string)image.Tag).Split(' ');
-                    string cur;
-                    if (tag.Length == 2 || tag[2] == "far")
-                        cur = "1";
-                    else
-                        cur = tag[2];
-                    if (cur != ChoosePeron.currentPos)
+                    var tag = GetCurrentPos((string)image.Tag);
+                    if (tag != ChoosePeron.currentPos)
                         continue;
                 }
                 var pb = new PictureBox
@@ -73,14 +68,7 @@ namespace TBC_editor
             if (name == "body")
             {
                 ChoosePeron.body = image;
-                var tag = ((string)image.Tag).Split(' ');
-                if(tag.Length == 2 || tag[2] == "far")
-                {
-                    ChoosePeron.currentPos = "1";
-                }else
-                {
-                    ChoosePeron.currentPos = tag[2];
-                }
+                ChoosePeron.currentPos = GetCurrentPos(((string)image.Tag));
             }
             if (name == "clothes")
                 ChoosePeron.clothes = image;
@@ -91,6 +79,17 @@ namespace TBC_editor
             {
                 button.Enabled = true;
             }
+        }
+        private static string GetCurrentPos(string line)
+        {
+            var tag = line.Split(' ');
+            if (tag.Length == 2)
+                return "1";
+            if (tag[2] == "far")
+                return "1_far";
+            if (tag.Length == 4 && tag[3] == "far")
+                return tag[2] + "_" + "far";
+            return tag[2];
         }
     }
 }
