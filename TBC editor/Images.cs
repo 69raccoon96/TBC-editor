@@ -14,8 +14,8 @@ namespace TBC_editor
     public partial class Images : Form
     {
         List<Bitmap> images;
-        string name;
-        ChoosePeron cp;
+        private string name;
+        private ChoosePeron cp;
         public Images(List<Bitmap> images, string name,ChoosePeron cp)
         {
             InitializeComponent();
@@ -68,6 +68,8 @@ namespace TBC_editor
             if (name == "body")
             {
                 ChoosePeron.body = image;
+                ChoosePeron.clothes = null;
+                ChoosePeron.emotion = null;
                 ChoosePeron.currentPos = GetCurrentPos(((string)image.Tag));
             }
             if (name == "clothes")

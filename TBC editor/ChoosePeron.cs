@@ -77,6 +77,9 @@ namespace TBC_editor
             index = this.listBox1.IndexFromPoint(e.Location);
             if (lastIndex != index)
             {
+                foreach (var button in Controls.OfType<Button>())
+                    if (button.Text != "Тело")
+                        button.Enabled = false;
                 body = null;
                 emotion = null;
                 clothes = null;
