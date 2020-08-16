@@ -95,7 +95,7 @@ namespace TBC_editor
                         return person.Name;
                 }
             }
-            return "";
+            throw new ArgumentException();
         }
         private void ListBox1_MouseDown(object sender, MouseEventArgs e)
         {

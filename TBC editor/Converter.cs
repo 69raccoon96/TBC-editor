@@ -46,5 +46,14 @@ namespace TBC_editor
                 tw.WriteLine(s);
             tw.Close();
         }
+        public static void ReplaceLines(int index ,int newindex)
+        {
+            var elem = actions[index];
+            actions.RemoveAt(index);
+            if (newindex == -1)
+                actions.Add(elem);
+            else
+                actions.Insert(newindex, elem);
+        }
     }
 }
