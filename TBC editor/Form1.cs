@@ -63,5 +63,10 @@ namespace TBC_editor
             var choosePerson = new ChoosePeron(res.persons);
             choosePerson.Show();
         }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            Converter.SaveFile();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,9 @@ namespace TBC_editor
         }
         public static void AddSprite(string body, string clothes, string emotions, string pos)
         {
+            body = body.Replace(' ', '_');
+            emotions = emotions.Replace(' ', '_');
+            clothes = clothes.Replace(' ', '_');
             var text = "";
             if (pos.Length == 0)
             {
@@ -33,6 +37,14 @@ namespace TBC_editor
                 text += "show " + emotions + " at " + pos;
             }
             actions.Add(text);
+        }
+        public static void SaveFile()
+        {
+            var path = Directory.GetCurrentDirectory() + "\\result.txt";
+            TextWriter tw = new StreamWriter(path);
+            foreach (var s in actions)
+                tw.WriteLine(s);
+            tw.Close();
         }
     }
 }
