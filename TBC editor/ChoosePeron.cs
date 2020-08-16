@@ -15,6 +15,7 @@ namespace TBC_editor
         public static Bitmap body;
         public static Bitmap emotion;
         public static Bitmap clothes;
+        public string pos = "По центру";
         List<Person> persons;
         Form1 form;
         public static string currentPos;
@@ -36,6 +37,14 @@ namespace TBC_editor
             index = 0;
             var point = listBox1.Location;
             point.Offset(listBox1.Width + 5,0);
+            var cb = new ComboBox();
+            cb.Items.AddRange(new object[] { "Слева", "По центру", "Справа" });
+            cb.SelectedIndex = 1;
+            var cbPoint = point;
+            cbPoint.Offset(0, 55);
+            cb.Location = cbPoint;
+            cb.SelectedIndexChanged += new EventHandler(ChangedComboBoxIndex);
+            Controls.Add(cb);
             Action<object, EventArgs> action = OpenBodies;
             CreateButton(point, "Тело",action);
             action = OpenClothes;
@@ -61,6 +70,11 @@ namespace TBC_editor
                 button.Enabled = false;
             Controls.Add(button); 
         }
+        private void ChangedComboBoxIndex(object sender, EventArgs e)
+        {
+            var cb = (ComboBox)sender;
+            pos = (string)cb.SelectedItem;
+        }
         private void OpenBodies(object sender, EventArgs e)
         {
             var images = new Images(persons[index].Bodies,"body",this);
@@ -78,7 +92,12 @@ namespace TBC_editor
         }
         private void PickSprite(object sender, EventArgs e)
         {
-            Converter.AddSprite((string)body.Tag, (string)clothes.Tag, (string)emotion.Tag, "");
+            if(body == null || emotion == null || clothes == null)
+            {
+                MessageBox.Show("Пожалуйста выберите все части спрайта");
+                return;
+            }
+            Converter.AddSprite((string)body.Tag, (string)clothes.Tag, (string)emotion.Tag,pos);
             form.listBox1.Items.Add("Спрайт: " + GetCurrentName());
             body = null;
             emotion = null;

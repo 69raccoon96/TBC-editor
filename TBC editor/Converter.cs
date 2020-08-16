@@ -25,16 +25,16 @@ namespace TBC_editor
             emotions = emotions.Replace(' ', '_');
             clothes = clothes.Replace(' ', '_');
             var text = "";
-            if (pos.Length == 0)
+            if (pos.Length == 0 || pos == "По центру")
             {
                 text += "show " + body + "\n";
                 text += "show " + clothes + "\n";
                 text += "show " + emotions;
             }else
             {
-                text += "show " + body + " at " + pos + "\n";
-                text += "show " + clothes + " at " + pos + "\n";
-                text += "show " + emotions + " at " + pos;
+                text += "show " + body + " at " + GetCorrectPos(pos) + "\n";
+                text += "show " + clothes + " at " + GetCorrectPos(pos) + "\n";
+                text += "show " + emotions + " at " + GetCorrectPos(pos);
             }
             actions.Add(text);
         }
@@ -45,6 +45,14 @@ namespace TBC_editor
             foreach (var s in actions)
                 tw.WriteLine(s);
             tw.Close();
+        }
+        public static string GetCorrectPos(string pos)
+        {
+            if (pos == "Слева")
+                return "left";
+            if (pos == "Справа")
+                return "right";
+            return "";
         }
         public static void ReplaceLines(int index ,int newindex)
         {
