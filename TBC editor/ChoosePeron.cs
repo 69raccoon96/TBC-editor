@@ -45,6 +45,7 @@ namespace TBC_editor
             point.Offset(105, 0);
             action = PickSprite;
             CreateButton(point, "Выбрать", action);
+            this.Width = point.X + 180;
         }
         
         private void CreateButton(Point point, string text, Action<object,EventArgs> action)
@@ -54,7 +55,7 @@ namespace TBC_editor
             button.Size = new Size(100, 50);
             button.Text = text;
             button.Click += new EventHandler(action);
-            if (text == "Одежда" || text == "Эмоция")
+            if (text == "Одежда" || text == "Эмоция" || text == "Выбрать")
                 button.Enabled = false;
             Controls.Add(button); 
         }
