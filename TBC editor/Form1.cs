@@ -16,12 +16,12 @@ namespace TBC_editor
         int indexToMove;
         public static List<string> textToDoc = new List<string>();
         private int selectedItem;
-        public static Resources res = new Resources();
+        public static Resources res;
         public Form1()
         {
             InitializeComponent();
             listBox1.AllowDrop = true;
-
+            res = new Resources();
             //подписываемся на события
             listBox1.MouseMove += new MouseEventHandler(listBox1_MouseMove);
             listBox1.DragEnter += new DragEventHandler(listBox1_DragEnter);

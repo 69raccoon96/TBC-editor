@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TBC_editor
 {
-    public struct Person
+    public class Person
     {
         public string Name;
         public string Tag;
@@ -26,7 +26,7 @@ namespace TBC_editor
             Clothes = new List<Bitmap>();
         }
     }
-    public struct Background
+    public class Background
     {
         public List<Bitmap> Inside;
         public List<Bitmap> Outside;
@@ -92,7 +92,6 @@ namespace TBC_editor
                 if(file.Name[0] == 'i')
                     bg.Inside.Add(pic);
             }
-            var a = bg;
         }
     }
 }
