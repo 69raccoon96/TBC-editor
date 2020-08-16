@@ -43,8 +43,7 @@ namespace TBC_editor
                 MessageBox.Show("Пожалуйста выберите, кто произносит фразу");
                 return;
             }
-            var text = persons[person].Tag + " \"" + textBox1.Text + "\"";
-            Form1.textToDoc.Add(text);
+            Converter.PersonSpeak(persons[person].Tag, textBox1.Text);
             form.listBox1.Items.Add(persons[person].Name + " \"" + textBox1.Text + "\"");
             textBox1.Clear();
         }

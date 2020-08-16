@@ -50,7 +50,7 @@ namespace TBC_editor
         }
         private void DeleteClicked(object sender,EventArgs e)
         {
-            textToDoc.RemoveAt(selectedItem);
+            Converter.RemoveItem(selectedItem);
             listBox1.Items.RemoveAt(selectedItem);
         }
         private void ListBox1_ouseClick(object sender, MouseEventArgs e)

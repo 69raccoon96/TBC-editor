@@ -42,7 +42,9 @@ namespace TBC_editor
             point.Offset(105, 0);
             action = OpenEmo;
             CreateButton(point, "Эмоция",action);
-            
+            point.Offset(105, 0);
+            action = PickSprite;
+            CreateButton(point, "Выбрать", action);
         }
         
         private void CreateButton(Point point, string text, Action<object,EventArgs> action)
@@ -70,6 +72,10 @@ namespace TBC_editor
         {
             var images = new Images(persons[index].Clothes, "clothes",this);
             images.Show();
+        }
+        private void PickSprite(object sender, EventArgs e)
+        {
+            Converter.AddSprite((string)body.Tag, (string)clothes.Tag, (string)emotion.Tag, "");
         }
         private void ListBox1_MouseDown(object sender, MouseEventArgs e)
         {

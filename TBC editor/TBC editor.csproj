@@ -67,6 +67,7 @@
     <Compile Include="ChoosePeron.Designer.cs">
       <DependentUpon>ChoosePeron.cs</DependentUpon>
     </Compile>
+    <Compile Include="Converter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
