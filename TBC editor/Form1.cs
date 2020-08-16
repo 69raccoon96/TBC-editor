@@ -116,5 +116,11 @@ namespace TBC_editor
         {
             Converter.SaveFile();
         }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            var form = new BG(res.bg);
+            form.Show();
+        }
     }
 }

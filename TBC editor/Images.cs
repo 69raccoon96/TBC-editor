@@ -81,7 +81,6 @@ namespace TBC_editor
             {
                 button.Enabled = true;
             }
-            Close();
         }
         private static string GetCurrentPos(string line)
         {
