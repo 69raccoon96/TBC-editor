@@ -16,10 +16,12 @@ namespace TBC_editor
         public static Bitmap emotion;
         public static Bitmap clothes;
         List<Person> persons;
+        Form1 form;
         public static string currentPos;
         int index;
-        public ChoosePeron(List<Person> persons)
+        public ChoosePeron(List<Person> persons, Form1 form)
         {
+            this.form = form;
             this.persons = persons;
             InitializeComponent();
         }
@@ -77,10 +79,23 @@ namespace TBC_editor
         private void PickSprite(object sender, EventArgs e)
         {
             Converter.AddSprite((string)body.Tag, (string)clothes.Tag, (string)emotion.Tag, "");
+            form.listBox1.Items.Add("Спрайт: " + GetCurrentName());
             body = null;
             emotion = null;
             clothes = null;
             Close();
+        }
+        public string GetCurrentName()
+        {
+            foreach(var person in persons)
+            {
+                foreach(var currentBody in person.Bodies)
+                {
+                    if ((string)currentBody.Tag == (string)body.Tag)
+                        return person.Name;
+                }
+            }
+            return "";
         }
         private void ListBox1_MouseDown(object sender, MouseEventArgs e)
         {

@@ -60,7 +60,7 @@ namespace TBC_editor
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            var choosePerson = new ChoosePeron(res.persons);
+            var choosePerson = new ChoosePeron(res.persons,this);
             choosePerson.Show();
         }
 
