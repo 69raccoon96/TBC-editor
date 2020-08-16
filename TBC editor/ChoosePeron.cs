@@ -76,6 +76,10 @@ namespace TBC_editor
         private void PickSprite(object sender, EventArgs e)
         {
             Converter.AddSprite((string)body.Tag, (string)clothes.Tag, (string)emotion.Tag, "");
+            body = null;
+            emotion = null;
+            clothes = null;
+            Close();
         }
         private void ListBox1_MouseDown(object sender, MouseEventArgs e)
         {
