@@ -119,7 +119,7 @@ namespace TBC_editor
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            var form = new BG(res.bg);
+            var form = new BG(res.bg, this);
             form.Show();
         }
     }

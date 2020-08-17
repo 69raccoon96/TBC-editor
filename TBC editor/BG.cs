@@ -12,11 +12,13 @@ namespace TBC_editor
 {
     public partial class BG : Form
     {
+        Form1 form;
         Background bg;
         int index = 0;
-        public BG(Background bg)
+        public BG(Background bg, Form1 form)
         {
             InitializeComponent();
+            this.form = form;
             this.AutoScroll = true;
             this.bg = bg;
         }
@@ -45,6 +47,7 @@ namespace TBC_editor
                 pb.Location = point;
                 pb.Image = image;
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.DoubleClick += new EventHandler(PBClicked);
                 Controls.Add(pb);
                 point.Offset(305, 0);
                 count++;
@@ -70,6 +73,13 @@ namespace TBC_editor
                 Controls.Clear();
                 UpdateForm();
             }
+        }
+        private void PBClicked(object sender, EventArgs e)
+        {
+            var name = (string)((PictureBox)sender).Image.Tag;
+            Converter.AddBg(name);
+            form.listBox1.Items.Add("Задний фон:" + name.Substring(3));
+            Close();
         }
     }
 }

@@ -19,6 +19,11 @@ namespace TBC_editor
         {
             actions.RemoveAt(index);
         }
+        public static void AddBg(string bg)
+        {
+            bg = bg.Replace(' ', '_');
+            actions.Add("scene bg " + bg);
+        }
         public static void AddSprite(string body, string clothes, string emotions, string pos)
         {
             body = body.Replace(' ', '_');
