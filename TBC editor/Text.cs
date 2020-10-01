@@ -13,8 +13,8 @@ namespace TBC_editor
     public partial class Text : Form
     {
         private List<Person> persons;
-        readonly Form1 form;
-        public Text(Form1 form, List<Person> res)
+        readonly MainForm form;
+        public Text(MainForm form, List<Person> res)
         {
             this.form = form;
             persons = res;
