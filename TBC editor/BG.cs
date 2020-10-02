@@ -12,10 +12,10 @@ namespace TBC_editor
 {
     public partial class BG : Form
     {
-        Form1 form;
+        MainForm form;
         Background bg;
         int index = 0;
-        public BG(Background bg, Form1 form)
+        public BG(Background bg, MainForm form)
         {
             InitializeComponent();
             this.form = form;

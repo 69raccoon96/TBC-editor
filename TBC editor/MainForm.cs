@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace TBC_editor
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         int indexToMove;
         public static List<string> textToDoc = new List<string>();
         private int selectedItem;
         public static Resources res;
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             listBox1.AllowDrop = true;

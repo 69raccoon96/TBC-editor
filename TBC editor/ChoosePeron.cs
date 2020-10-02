@@ -17,10 +17,10 @@ namespace TBC_editor
         public static Bitmap clothes;
         public string pos = "По центру";
         List<Person> persons;
-        Form1 form;
+        MainForm form;
         public static string currentPos;
         int index;
-        public ChoosePeron(List<Person> persons, Form1 form)
+        public ChoosePeron(List<Person> persons, MainForm form)
         {
             this.form = form;
             this.persons = persons;

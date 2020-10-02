@@ -1,6 +1,6 @@
 ﻿namespace TBC_editor
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -40,19 +40,20 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(419, 12);
+            this.listBox1.Location = new System.Drawing.Point(314, 10);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(523, 532);
+            this.listBox1.Size = new System.Drawing.Size(393, 433);
             this.listBox1.TabIndex = 0;
             this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListBox1_ouseClick);
             this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox1_MouseDown);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(21, 32);
+            this.button1.Location = new System.Drawing.Point(16, 26);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 47);
+            this.button1.Size = new System.Drawing.Size(87, 38);
             this.button1.TabIndex = 1;
             this.button1.Text = "Текст";
             this.button1.UseVisualStyleBackColor = true;
@@ -60,9 +61,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(143, 32);
+            this.button2.Location = new System.Drawing.Point(107, 26);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 47);
+            this.button2.Size = new System.Drawing.Size(87, 38);
             this.button2.TabIndex = 2;
             this.button2.Text = "Спрайт";
             this.button2.UseVisualStyleBackColor = true;
@@ -70,9 +72,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(21, 85);
+            this.button3.Location = new System.Drawing.Point(16, 69);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 47);
+            this.button3.Size = new System.Drawing.Size(87, 38);
             this.button3.TabIndex = 3;
             this.button3.Text = "Бг";
             this.button3.UseVisualStyleBackColor = true;
@@ -80,18 +83,20 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(143, 85);
+            this.button4.Location = new System.Drawing.Point(107, 69);
+            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(116, 47);
+            this.button4.Size = new System.Drawing.Size(87, 38);
             this.button4.TabIndex = 4;
             this.button4.Text = "Музыка";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(21, 138);
+            this.button5.Location = new System.Drawing.Point(16, 112);
+            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(116, 47);
+            this.button5.Size = new System.Drawing.Size(87, 38);
             this.button5.TabIndex = 5;
             this.button5.Text = "button5";
             this.button5.UseVisualStyleBackColor = true;
@@ -99,18 +104,19 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(143, 138);
+            this.button6.Location = new System.Drawing.Point(107, 112);
+            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(116, 47);
+            this.button6.Size = new System.Drawing.Size(87, 38);
             this.button6.TabIndex = 6;
             this.button6.Text = "button6";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(954, 552);
+            this.ClientSize = new System.Drawing.Size(716, 448);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -118,8 +124,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "MainForm";
+            this.Text = "MainForm";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
